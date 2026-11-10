@@ -8,7 +8,11 @@ designed to showcase an immersive visual experience.
 Explore the responsive Solara Stays homepage, featuring an interactive 3D hanging chair and custom visual design.
 
 
-https://github.com/user-attachments/assets/85fd91ea-f864-4112-82c2-e0516c7d552a
+
+
+https://github.com/user-attachments/assets/dff9d2f1-0968-4bc0-9672-f7c14dfbda34
+
+
 
 
 
