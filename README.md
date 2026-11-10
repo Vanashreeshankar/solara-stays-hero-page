@@ -3,6 +3,15 @@
 A responsive landing page concept for a boutique hotel,
 designed to showcase an immersive visual experience.
 
+## Project Demo
+
+Explore the responsive Solara Stays homepage, featuring an interactive 3D hanging chair and custom visual design.
+
+
+https://github.com/user-attachments/assets/85fd91ea-f864-4112-82c2-e0516c7d552a
+
+
+
 ## Project Overview
 
 This project focuses on the hero section of a boutique
