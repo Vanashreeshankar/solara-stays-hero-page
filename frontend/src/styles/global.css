@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #fffaf4;
+  background: #17191f;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+html {
+  scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+select {
+  font-family: inherit;
+}
+
+/* MAIN LANDING PAGE */
+
+.landing-page {
+  /* Dark overlay + background image. The image is swapped below
+     depending on the shape of the window. */
+  --shade: linear-gradient(
+    to bottom,
+    rgba(10, 12, 18, 0.10),
+    rgba(10, 12, 18, 0.015) 60%,
+    rgba(10, 12, 18, 0.10)
+  );
+
+  /* Portrait tablets / squarish windows */
+  --bg: url('/images/background-tablet.png');
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
+  min-height: 600px;
+
+  overflow: hidden;
+
+  /* Third layer = safety net: if the picked image file is missing or has
+     a different name, background.png is shown instead of a dark page. */
+  background-image: var(--shade), var(--bg), url('/images/background.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+/* ------------------------------------------------------------------
+   One image per window shape (window width / window height).
+   From 1.3:1 upwards the whole picture is shown with nothing cropped:
+   the image is fitted exactly (100% 100%) and is stretched by 7% at most.
+
+   File                     Image shape   Window shape it is used for
+   background-tablet.png    0.75 : 1      narrower than 1.3   (cover)
+   background-140.png       1.40 : 1      1.30 to 1.50
+   background-160.png       1.60 : 1      1.50 to 1.69
+   background.png           1.78 : 1      1.69 to 1.87   (16:9)
+   background-195.png       1.95 : 1      1.87 to 2.03
+   background-210.png       2.10 : 1      2.03 to 2.18
+   background-225.png       2.25 : 1      2.18 to 2.32
+   background-225.png       2.25 : 1      wider than 2.32     (cover)
+   background-mobile.png    0.50 : 1      phones, width 760px or less (cover)
+   ------------------------------------------------------------------ */
+
+@media (min-aspect-ratio: 13/10) {
+  .landing-page {
+    --bg: url('/images/background-140.png');
+    background-size: 100% 100%;
+  }
+}
+
+@media (min-aspect-ratio: 15/10) {
+  .landing-page {
+    --bg: url('/images/background-160.png');
+  }
+}
+
+@media (min-aspect-ratio: 169/100) {
+  .landing-page {
+    --bg: url('/images/background.png');
+  }
+}
+
+@media (min-aspect-ratio: 187/100) {
+  .landing-page {
+    --bg: url('/images/background-195.png');
+  }
+}
+
+@media (min-aspect-ratio: 203/100) {
+  .landing-page {
+    --bg: url('/images/background-210.png');
+  }
+}
+
+@media (min-aspect-ratio: 218/100) {
+  .landing-page {
+    --bg: url('/images/background-225.png');
+  }
+}
+
+/* Very wide windows (wider than 2.32:1): only a thin strip of sky is cropped */
+
+@media (min-aspect-ratio: 232/100) {
+  .landing-page {
+    background-size: cover;
+    background-position: center bottom;
+  }
+}
+
+/* Shared positioning reference */
+
+.landing-page > * {
+  box-sizing: border-box;
+}
+
+/* Mobile: the page is stacked and taller than the screen, so a tall
+   picture is used and fills the width of the screen */
+
+@media (max-width: 760px) {
+  .landing-page {
+    --bg: url('/images/background-mobile.png');
+
+    height: auto;
+    min-height: 100svh;
+    overflow: hidden;
+
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center bottom;
+  }
+}

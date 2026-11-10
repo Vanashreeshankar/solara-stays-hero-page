@@ -1,0 +1,145 @@
+/* =====================================
+   SOLARA STAYS — HANGING CHAIR
+
+   The Spline scene is designed for a portrait canvas. When the canvas
+   becomes much narrower than that, the chair gets cropped on the left
+   and right. So on tablet / mobile the canvas keeps a fixed aspect
+   ratio (--chair-ratio) and only its width changes.
+
+   Desktop: chair sits to the right of the text.
+   <= 1100px: chair goes BEHIND the text (z-index below .hero).
+   <= 760px : chair is centred behind the centred hero text.
+===================================== */
+
+.hanging-chair {
+  position: absolute;
+
+  /* Pull the chair towards the top edge */
+  top: -15vh !important;
+
+  right: 20%;
+
+  width: 46%;
+  height: 105%;
+
+  z-index: 3;
+  pointer-events: auto;
+
+  transform: none;
+  transform-origin: center center;
+}
+
+/* fills the chair box, whatever size or aspect ratio it has */
+.hanging-chair-scene {
+  position: absolute;
+  inset: 0;
+
+  background: transparent;
+  overflow: visible;
+}
+
+.hanging-chair-scene canvas {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  background: transparent !important;
+}
+
+/* Loading state */
+.chair-loading {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(255, 245, 230, 0.7);
+  font-size: 13px;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =====================================
+   LAPTOP
+===================================== */
+
+@media (max-width: 1200px) and (min-width: 761px) {
+  .hanging-chair {
+    top: -6vh;
+
+    right: 14%;
+
+    width: 44%;
+    height: 100%;
+  }
+}
+
+/* =====================================
+   TABLET (761px - 1100px)
+   Chair goes behind the text, and keeps its proportions
+   so it is no longer cropped left and right.
+===================================== */
+
+@media (max-width: 1100px) {
+  .hanging-chair {
+    --chair-ratio: 0.72; /* width / height of the canvas */
+
+    z-index: 1; /* .hero is z-index: 2, so text and buttons sit on top */
+
+    top: -2vh;
+    right: 8%;
+
+    width: 54%;
+    height: auto;
+
+    aspect-ratio: var(--chair-ratio);
+  }
+}
+
+/* =====================================
+   PORTRAIT TABLET + MOBILE  (<= 760px)
+   Chair is centred and sits behind the centred text.
+   The canvas is taller than the visible chair, which is fine:
+   it is transparent and sits behind the booking panel.
+===================================== */
+
+@media (max-width: 760px), (max-width: 1100px) and (orientation: portrait) {
+  .hanging-chair {
+    --chair-ratio: 0.78;
+    --chair-w: min(100%, 720px);
+
+    position: absolute;
+
+    top: 0;
+    right: auto;
+    left: 50%;
+
+    width: var(--chair-w);
+    height: auto;
+
+    aspect-ratio: var(--chair-ratio);
+
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    z-index: 1;
+
+    /* let touches scroll the page instead of being captured by the 3D canvas */
+    pointer-events: none;
+  }
+}
+
+/* =====================================
+   SMALL PHONES
+===================================== */
+
+@media (max-width: 480px) {
+  .hanging-chair {
+    --chair-w: 118%; /* slightly wider than the screen so the chair fills the width */
+  }
+}

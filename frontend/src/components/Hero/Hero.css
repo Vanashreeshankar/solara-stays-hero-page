@@ -1,0 +1,524 @@
+/* HERO SECTION */
+
+.hero {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+/* HERO CONTENT */
+
+.hero-content {
+  position: absolute;
+
+  left: 10.65%;
+  top: 18%;
+
+  width: 470px;
+  max-width: 42%;
+
+  pointer-events: auto;
+}
+
+/* EYEBROW */
+
+.hero-eyebrow {
+  color: #f4c28d;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  margin-bottom: 22px;
+}
+
+/* MAIN HEADING */
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Playfair Display', serif;
+
+  color: #fffaf4;
+
+  font-size: clamp(52px, 5.1vw, 82px);
+  font-weight: 400;
+
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-title em {
+  position: relative;
+
+  color: #e8a875;
+
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* DECORATIVE UNDERLINE */
+
+.hero-title em::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 1px;
+
+  width: 100%;
+  height: 1px;
+
+  background: #d99b70;
+
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
+/* DESCRIPTION */
+
+.hero-description {
+  margin-top: 27px;
+
+  color: rgba(255, 250, 244, 0.92);
+
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1.65;
+}
+
+/* HERO BUTTONS */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 26px;
+}
+
+/* EXPLORE BUTTON: glossy, translucent peach-cream pill with a light sweep */
+
+.explore-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-width: 192px;
+  height: 52px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+  padding: 0 24px;
+
+  /* cream on the left, warmer peach on the right */
+  background: linear-gradient(
+    105deg,
+    rgba(254, 234, 208, 0.97) 0%,
+    rgba(252, 221, 186, 0.96) 42%,
+    rgba(250, 205, 153, 0.95) 78%,
+    rgba(248, 191, 129, 0.95) 100%
+  );
+
+  color: #17130f;
+
+  border-radius: 50px;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(196, 124, 54, 0.28),
+    0 0 0 1px rgba(255, 238, 214, 0.35),
+    0 8px 22px rgba(247, 189, 128, 0.26);
+
+  text-shadow: none;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* glossy highlight across the top half */
+
+.explore-button::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 52%;
+
+  z-index: -1;
+
+  border-radius: 50px 50px 60% 60% / 50px 50px 14px 14px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.08)
+  );
+
+  pointer-events: none;
+}
+
+/* moving light sweep (every few seconds, and on hover) */
+
+.explore-button::after {
+  content: "";
+
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -40%;
+
+  width: 28%;
+
+  z-index: -1;
+
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  transform: skewX(-20deg);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: explore-shine 6s ease-in-out 3s infinite;
+}
+
+.explore-button svg {
+  transition: transform 0.3s ease;
+}
+
+.explore-button:hover {
+  filter: brightness(1.04) saturate(1.05);
+  transform: translateY(-3px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(196, 124, 54, 0.3),
+    0 0 0 1px rgba(255, 240, 220, 0.5),
+    0 12px 28px rgba(247, 189, 128, 0.42);
+}
+
+.explore-button:hover::after {
+  animation: explore-shine-hover 0.9s ease-out 1;
+}
+
+.explore-button:hover svg {
+  transform: translateX(3px);
+}
+
+@keyframes explore-shine {
+  0%,
+  72% {
+    left: -40%;
+    opacity: 0;
+  }
+
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 130%;
+    opacity: 0;
+  }
+}
+
+@keyframes explore-shine-hover {
+  0% {
+    left: -40%;
+    opacity: 1;
+  }
+
+  100% {
+    left: 130%;
+    opacity: 0;
+  }
+}
+
+/* WATCH STORY */
+
+.story-button {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 14px;
+
+  color: #fffaf4;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* PLAY ICON: dark glass circle with a thin cream / gold outline */
+
+.play-circle {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fffaf4;
+
+  background: rgba(24, 19, 16, 0.30);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.18),
+    inset 0 0 14px rgba(247, 209, 158, 0.06);
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* gradient outline (cream -> gold -> cream), drawn as a masked ring */
+
+.play-circle::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  padding: 1.5px;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    135deg,
+    #f8e0b8 0%,
+    #c9a063 38%,
+    #a77c45 55%,
+    #f4d9ac 100%
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  pointer-events: none;
+
+  transition: filter 0.3s ease;
+}
+
+/* nudge the triangle right so it looks optically centred */
+
+.play-circle svg {
+  position: relative;
+  margin-left: 2px;
+
+  transition: transform 0.3s ease;
+}
+
+.story-button:hover .play-circle {
+  background: rgba(247, 209, 158, 0.14);
+
+  box-shadow:
+    0 0 18px rgba(247, 209, 158, 0.32),
+    0 4px 16px rgba(0, 0, 0, 0.18),
+    inset 0 0 14px rgba(247, 209, 158, 0.12);
+
+  transform: scale(1.08);
+}
+
+.story-button:hover .play-circle::before {
+  filter: brightness(1.18);
+}
+
+.story-button:hover .play-circle svg {
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-button::after {
+    animation: none;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .hero-content {
+    left: 7%;
+    top: 18%;
+
+    width: 430px;
+    max-width: 55%;
+  }
+
+  .hero-title {
+    font-size: 62px;
+  }
+
+  .hero-description {
+    font-size: 17px;
+  }
+
+  .hero-actions {
+    gap: 18px;
+  }
+}
+
+/* MOBILE + PORTRAIT TABLET
+   Text is centred and sits on top of the chair (chair has z-index: 1). */
+
+@media (max-width: 760px), (max-width: 1100px) and (orientation: portrait) {
+  .hero {
+    position: relative;
+    inset: auto;
+
+    /* height now follows the text, so there is no empty gap before the panel */
+    height: auto;
+
+    /* Reserve room for the chair (it is absolutely positioned behind the text),
+       so the panel always starts BELOW the chair.
+       = chair canvas width / 0.78 (its aspect ratio) x 0.64 (share of the
+       canvas the visible chair reaches, after the 8% lift in
+       HangingChair.css) + a 24px gap.
+       Raise 0.64 for a bigger gap, lower it for a smaller one. */
+    min-height: calc(min(100vw, 720px) / 0.78 * 0.64 + 24px);
+
+    padding-bottom: 8px;
+  }
+
+  .hero-content {
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    width: 100%;
+    max-width: none;
+
+    /* the top padding clears the navbar */
+    padding: 105px 6% 0;
+
+    text-align: center;
+
+    /* keeps text readable over the chair */
+    text-shadow: 0 2px 18px rgba(20, 12, 8, 0.45);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    align-items: center;
+
+    font-size: clamp(45px, 10vw, 62px);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    max-width: 34ch;
+    margin: 22px auto 0;
+
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero-description br {
+    display: none;
+  }
+
+  /* Explore button on top, Watch the Story below (as in the reference) */
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-top: 24px;
+  }
+
+  .explore-button {
+    min-width: 180px;
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .play-circle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .story-button {
+    font-size: 13px;
+  }
+}
+
+/* Phones: the chair canvas is 118% of the screen width here */
+@media (max-width: 480px) {
+  .hero {
+    min-height: calc(118vw / 0.78 * 0.60 + 24px);
+  }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .hero-content {
+    padding-top: 96px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+}

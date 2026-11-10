@@ -1,0 +1,215 @@
+/* CATEGORY CARDS CONTAINER */
+
+.category-cards {
+  position: absolute;
+
+  top: 22%;
+  right: 6.8%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  z-index: 5;
+}
+
+/* INDIVIDUAL CARD */
+
+.category-card {
+  width: 153px;
+  height: 105px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 12px 25px;
+
+  border: 1px solid rgba(255, 250, 244, 0.38);
+
+  border-radius: 32px;
+
+  /* Nearly transparent glass */
+
+  background: rgba(255, 255, 255, 0.025);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  color: #fffaf4;
+
+  text-decoration: none;
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* ICON */
+
+.category-icon {
+  color: #fffaf4;
+
+  flex-shrink: 0;
+
+  transition: transform 0.35s ease;
+}
+
+/* TEXT */
+
+.category-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1px;
+
+  color: rgba(255, 250, 244, 0.96);
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.25;
+}
+
+/* HOVER */
+
+.category-card:hover {
+  background: rgba(255, 255, 255, 0.075);
+
+  border-color: rgba(255, 250, 244, 0.75);
+
+  transform: translateX(-5px);
+}
+
+.category-card:hover .category-icon {
+  transform: translateY(-2px);
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .category-cards {
+    top: 23%;
+    right: 4%;
+
+    gap: 10px;
+  }
+
+  .category-card {
+    width: 135px;
+    height: 100px;
+
+    padding: 12px 20px;
+
+    border-radius: 27px;
+  }
+
+  .category-text {
+    font-size: 14px;
+  }
+}
+
+/* MOBILE + PORTRAIT TABLET
+   Three plain items in a row with thin dividers, sitting at the top of
+   the glass panel (see BookingPanel.css). */
+
+@media (max-width: 760px), (max-width: 1100px) and (orientation: portrait) {
+  .category-cards {
+    position: relative;
+
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+
+    width: 100%;
+
+    margin: 0 0 22px;
+
+    flex-direction: row;
+
+    gap: 0;
+
+    z-index: auto;
+  }
+
+  .category-card {
+    position: relative;
+
+    flex: 1;
+    min-width: 0;
+
+    width: auto;
+    height: auto;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    padding: 8px 6px;
+
+    text-align: center;
+
+    border: none;
+    border-radius: 0;
+
+    background: transparent;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* thin vertical divider between items */
+  .category-card + .category-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 1px;
+    height: 62%;
+
+    transform: translateY(-50%);
+
+    background: rgba(255, 250, 244, 0.22);
+  }
+
+  .category-card:hover {
+    background: transparent;
+    border-color: transparent;
+
+    transform: none;
+  }
+
+  .category-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .category-text {
+    align-items: center;
+
+    font-size: 15px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .category-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .category-text {
+    font-size: 13px;
+  }
+}
